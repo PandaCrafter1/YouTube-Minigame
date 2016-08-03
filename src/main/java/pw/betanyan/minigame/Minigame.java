@@ -36,7 +36,7 @@ public class Minigame extends JavaPlugin {
 
         loadConfig();
 
-        registerListeners(new PlayerInteract(this), new SignChange(), new PlayerDeath(), new PlayerDamage(), new PlayerFood());
+        registerListeners(new PlayerInteract(this), new SignChange(), new PlayerDeath(), new PlayerDamage(), new PlayerFood(), new PlayerMove());
 
         registerCommands();
 

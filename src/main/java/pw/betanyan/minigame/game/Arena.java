@@ -108,20 +108,31 @@ public class Arena {
                     name.setPrefix(ChatColor.GREEN + "Name: ");
                     name.setSuffix(player.getName());
 
-                    obj.getScore(ChatColor.RED.toString()).setScore(2);
+                    obj.getScore(ChatColor.RED.toString()).setScore(3);
 
                     Team blank1 = board.registerNewTeam("blank1");
                     blank1.addEntry(ChatColor.BLUE.toString());
 
-                    obj.getScore(ChatColor.BLUE.toString()).setScore(1);
+                    obj.getScore(ChatColor.BLUE.toString()).setScore(2);
 
                     Team kills = board.registerNewTeam("kills");
 
                     kills.addEntry(ChatColor.GREEN.toString());
                     kills.setPrefix(ChatColor.GREEN + "Kills: ");
-                    kills.setSuffix(this.kills.get(player.getName()).toString());
+                    kills.setSuffix(ChatColor.RED + this.kills.get(player.getName()).toString());
 
-                    obj.getScore(ChatColor.GREEN.toString()).setScore(0);
+                    obj.getScore(ChatColor.GREEN.toString()).setScore(1);
+
+                    Team state = board.registerNewTeam("state");
+
+                    state.addEntry(ChatColor.YELLOW.toString());
+                    state.setPrefix(ChatColor.GREEN + "GameState: ");
+                    state.setSuffix(ChatColor.RED + Character.toString(this.getState().toString().charAt(0))
+                            + this.getState().toString().toLowerCase().substring(1));
+
+                    obj.getScore(ChatColor.YELLOW.toString()).setScore(0);
+
+                    player.setScoreboard(board);
 
 
                 } else {

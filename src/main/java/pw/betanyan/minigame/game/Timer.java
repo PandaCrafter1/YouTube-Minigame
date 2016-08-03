@@ -1,5 +1,6 @@
 package pw.betanyan.minigame.game;
 
+import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 import pw.betanyan.minigame.Minigame;
 
@@ -8,6 +9,7 @@ public class Timer extends BukkitRunnable {
     private Arena arena;
 
     private int lobbyTimeLeft;
+    private int cornTimeLeft;
     private int gameTimeLeft;
     private int endTimeLeft;
 
@@ -18,6 +20,7 @@ public class Timer extends BukkitRunnable {
         this.arena = arena;
 
         this.lobbyTimeLeft = 60;
+        this.cornTimeLeft = 15;
         this.gameTimeLeft = 300;
         this.endTimeLeft = 10;
 
@@ -42,9 +45,25 @@ public class Timer extends BukkitRunnable {
                     if (lobbyTimeLeft != 0) {
                         lobbyTimeLeft--;
                     } else {
-                        arena.setState(GameState.INGAME);
+
+                        arena.setState(GameState.CORN);
+
+                        for (int i=0; i<arena.getIngame().size(); i++) {
+                            Bukkit.getPlayer(arena.getIngame().get(i))
+                                    .teleport(arena.getSpawns().get(i));
+                        }
+
                         arena.updateSign();
                         //TODO: Send players to spawn, start game, etc
+                    }
+                    arena.updateScoreboards();
+                    break;
+                case CORN:
+                    if (cornTimeLeft != 0) {
+                        cornTimeLeft--;
+                    } else {
+                        arena.setState(GameState.INGAME);
+                        arena.updateSign();
                     }
                     arena.updateScoreboards();
                     break;

@@ -101,6 +101,8 @@ public class Timer extends BukkitRunnable {
 
             case LOBBY:
                 return lobbyTimeLeft / 60;
+            case CORN:
+                return gameTimeLeft / 60;
             case INGAME:
                 return gameTimeLeft / 60;
             case END:
@@ -118,6 +120,8 @@ public class Timer extends BukkitRunnable {
 
             case LOBBY:
                 return lobbyTimeLeft % 60;
+            case CORN:
+                return gameTimeLeft % 60;
             case INGAME:
                 return gameTimeLeft % 60;
             case END:

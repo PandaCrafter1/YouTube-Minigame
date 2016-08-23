@@ -132,6 +132,8 @@ public class Arena {
 
                     obj.getScore(ChatColor.YELLOW.toString()).setScore(0);
 
+                    scoreboards.put(player.getName(), board); //adds the player so the scoreboard can update
+
                     player.setScoreboard(board);
 
 

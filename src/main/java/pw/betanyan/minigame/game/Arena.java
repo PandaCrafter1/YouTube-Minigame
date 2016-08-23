@@ -220,6 +220,8 @@ public class Arena {
 
             board.getTeam("kills").setSuffix(kills.get(user).toString());
 
+            board.getTeam("state").setSuffix(ChatColor.RED + Character.toString(this.getState().toString().charAt(0))
+                            + this.getState().toString().toLowerCase().substring(1));
         }
 
     }

@@ -218,7 +218,7 @@ public class Arena {
             board.getObjective(DisplaySlot.SIDEBAR).setDisplayName(ChatColor.AQUA + ChatColor.BOLD.toString() + "Minigame "
                     + ChatColor.YELLOW + getTimer().formatTime());
 
-            board.getTeam("kills").setSuffix(kills.get(user).toString());
+            board.getTeam("kills").setSuffix(ChatColor.RED + kills.get(user).toString());
 
         }
 
